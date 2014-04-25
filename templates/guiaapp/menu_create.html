@@ -1,0 +1,52 @@
+{% extends "guiaapp/base.html" %}
+
+{% block title %} {{edit}} menu - {% endblock %}
+
+{% block body_block %}
+<ol class="breadcrumb breadcrumb-border">
+    <li><a href="/menu">Menu</a></li>
+    <li class="active">{{edit}} menu</li>
+</ol>
+
+<form action="" method="post">
+    <div class="panel panel-default">
+        <div class="panel-heading">Dados</div>
+		
+		{% csrf_token %}
+		
+		{{ form.non_field_errors }}
+		
+		{{ form.id  }}
+
+        <div class="form-horizontal panel-padding2">
+
+            <div class="form-group">				
+				<label class="control-label col-md-2" for="description">Description</label>
+                <div class="col-md-4">
+                    {{ form.description  }}
+                    {{ form.description.errors }}
+                </div>
+            </div>
+
+
+            <div class="form-group">
+            	<label class="control-label col-md-2" for="active">Active</label>
+
+                 <div class="col-md-10">
+                     {{ form.active }}
+                     {{ form.active.errors }}
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel-footer">
+             <a href="/menu" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+
+            <button type="submit" class="btn btn-success">
+                <span class="glyphicon glyphicon-ok"></span> Confirmar
+            </button>
+        </div>
+    </div>
+</form>
+{% endblock %}

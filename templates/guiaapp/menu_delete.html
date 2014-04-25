@@ -1,0 +1,53 @@
+{% extends "guiaapp/base.html" %}
+{% block title %} Deletar menu - {% endblock %}
+{% block body_block %}
+
+<ol class="breadcrumb breadcrumb-border">
+    <li><a href="/menu">Menu</a></li>
+    <li class="active">Deletar usuário</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Dados</div>
+
+    <div class=" panel-padding2">
+        <div class="alert alert-warning">
+            Tem certeza de que deseja excluir este registro?
+        </div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                Description
+            </dt>
+
+            <dd>
+                {{ menu.description }}            
+            </dd>
+
+            <dt>
+                Active
+            </dt>
+
+            <dd>
+                {{ menu.active }}    
+            </dd>
+
+        </dl>
+
+    </div>
+    <div class="panel-footer">
+
+        <form action="" method="post">
+            
+            {% csrf_token %}
+
+            <a href="/menu" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+
+            <button type="submit" class="btn btn-danger">
+                <span class="glyphicon glyphicon-ok"></span> Confirmar
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
