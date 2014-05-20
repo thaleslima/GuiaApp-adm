@@ -1,0 +1,161 @@
+{% extends "guiaapp/base.html" %}
+
+{% block title %} {{edit}} local - {% endblock %}
+
+{% block body_block %}
+<ol class="breadcrumb breadcrumb-border">
+    <li><a href="/local">Menu</a></li>
+    <li class="active">{{edit}} local</li>
+</ol>
+
+<form action="" method="post">
+    <div class="panel panel-default">
+        <div class="panel-heading">Dados</div>
+		
+		{% csrf_token %}
+		
+		{{ form.non_field_errors }}
+		
+		{{ form.id  }}
+
+        <div class="form-horizontal panel-padding2">
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Cidade *</label>
+                <div class="col-md-4">
+                     {{ form.city }}
+                     {{ form.city.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Menu *</label>
+                <div class="col-md-4">
+                     {{ form.menu }}
+                     {{ form.menu.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Nome *</label>
+                <div class="col-md-8">
+                    {{ form.name }}
+                    {{ form.name.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Telefone</label>
+                <div class="col-md-4">
+                    {{ form.telephone }}
+                    {{ form.telephone.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Site</label>
+                <div class="col-md-8">
+                    {{ form.site }}
+                    {{ form.site.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Email</label>
+                <div class="col-md-8">
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Ativo</label>
+                <div class="col-md-10">
+                    {{ form.active }}
+                    {{ form.active.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Imagem</label>
+                <div class="col-md-10">
+                    <input name="file" type="file" id="file" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-10">
+                    <div class="image empty">
+                        <span class="text-upload-file">Resolução: 1024 (largura) x 500 (altura)</span>
+                        <span class="glyphicon glyphicon-picture"></span>
+
+                        <img id="image-local" src="" alt="Imagem local " class="hide" width="275" />
+                        <input type="hidden" name="PathImage" id="PathImage" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Descrição</label>
+                <div class="col-sm-10">
+                    {{ form.description }}
+                    {{ form.description.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Endereço</label>
+                <div class="col-md-8">
+                    {{ form.address }}
+                    {{ form.address.errors }}
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn" id='buscar-endereco'><i class="icon-map-marker"></i> Localizar</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Latitude</label>
+                <div class="col-md-4">
+                    {{ form.latitude }}
+                    {{ form.latitude.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="active">Longitude</label>
+                <div class="col-md-4">
+                    {{ form.longitude }}
+                    {{ form.longitude.errors }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-10">
+                    <div class="form-inline mapa-adm" id="map_canvas" style="width:500px;height:380px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+             <a href="/local" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+
+            <button type="submit" class="btn btn-success">
+                <span class="glyphicon glyphicon-ok"></span> Confirmar
+            </button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block scripts_block %}
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDqDF9moHDZE1-r4okO_Ha2GhrKNfu5ZBY&sensor=false"></script>
+    <script src="/static/js/map.js"></script>
+{% endblock %}

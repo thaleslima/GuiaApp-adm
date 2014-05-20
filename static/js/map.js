@@ -11,7 +11,6 @@ var map;
 var marker;
 
 function codeAddress(address) {
-
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
@@ -24,38 +23,13 @@ function codeAddress(address) {
 
             var latitude = results[0].geometry.location.lat();
             var longitude = results[0].geometry.location.lng();
-            $("#Latitude").val(latitude);
-            $("#Longitude").val(longitude);
+
+            document.getElementById("id_latitude").value = latitude;
+            document.getElementById("id_longitude").value = longitude;
         } else {
             //.alert("Geocode was not successful for the following reason: " + status);
         }
     });
-}
-
-//function placeMarker(lat, lng) {
-//    var lat = parseFloat(lat);
-//    var lng = parseFloat(lng);
-//    var location = new google.maps.LatLng(lat, lng);
-//    map.setCenter(location);
-//    var marker = new google.maps.Marker({
-//        position: location,
-//        map: map,
-//        draggable: true,
-//        icon: "Imagens/ico_mover.png",
-//        title: "Arraste o imóvel para a nova localização"
-//    });
-//    google.maps.event.addListener(marker, "dragend", function () {
-//        var position = marker.getPosition().toUrlValue().split(",");
-//        var lat = position[0];
-//        var lng = position[1];
-//        $("#Latitude").val(position[0]);
-//        $("#Longitude").val(position[1]);
-//    });
-//}
-
-
-function ValidaBuscaEndereco() {
-    codeAddress($("#Address").val());
 }
 
 function initialize()
@@ -64,11 +38,11 @@ function initialize()
     var latitude = -23.54761;
     var longitude = -46.623822
 
-    initialize2(latitude, longitude, '');
+    initializeMap(latitude, longitude, '');
 }
 
 
-function initialize2(lat1, lng1, zoom) {
+function initializeMap(lat1, lng1, zoom) {
     geocoder = new google.maps.Geocoder();
     var myLatlng = new google.maps.LatLng(lat1, lng1);
 
@@ -96,25 +70,30 @@ function initialize2(lat1, lng1, zoom) {
         var position = marker.getPosition().toUrlValue().split(",");
         var lat = position[0];
         var lng = position[1];
-        $("#Latitude").val(position[0]);
-        $("#Longitude").val(position[1]);
+        document.getElementById("id_latitude").value = position[0];
+        document.getElementById("id_longitude").value = position[1];        
     });
 }
 
 
 $(function () {
+    var latitude = document.getElementById("id_latitude").value;
+    var longitude = document.getElementById("id_longitude").value;
 
-    if ($("#Latitude").val() != "" && $("#Longitude").val() != "") {
-        initialize2($("#Latitude").val(), $("#Longitude").val(), 16);
+    if (latitude != "" && longitude != "") {
+        initializeMap(latitude, longitude, 16);
     }
     else
     {
         initialize();
     }
 
-    $("#IdCity").change(function () {
-        codeAddress($(this).text());
-    });
+
+    var city = document.getElementById("id_city");
+    city.addEventListener('change', function() { codeAddress(this.options[this.selectedIndex].text); } , false);
+
+    var buscarEndereco = document.getElementById("buscar-endereco");
+    buscarEndereco.addEventListener('click', function() { codeAddress(document.getElementById("id_address").value); } , false);
 
 
     $("#file").change(function () {
@@ -146,11 +125,11 @@ $(function () {
                 {
                     console.log(response);
 
-                    $(".image").removeClass("empty");
-                    $(".image span").addClass("hide");
-                    $("#PathImage").val(response.file);
-                    $("#image-local").attr("src", '../' + url3 + '/' + response.file).removeClass("hide");
-                    $("#file").val("");
+                    //$(".image").removeClass("empty");
+                    // $(".image span").addClass("hide");
+                    // $("#PathImage").val(response.file);
+                    // $("#image-local").attr("src", '../' + url3 + '/' + response.file).removeClass("hide");
+                    // $("#file").val("");
                     
 
                     //var oImg = document.createElement("img");

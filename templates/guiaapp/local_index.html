@@ -1,0 +1,92 @@
+{% extends "guiaapp/base.html" %}
+
+{% block title %}Local - {% endblock %}
+
+{% block body_block %}
+
+<ol class="breadcrumb breadcrumb-border">
+    <li><a href="/">Home</a></li>
+    <li class="active">Local</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Filtrar menus</div>
+
+     <form  action="" class="form-horizontal" method="post">
+        {% csrf_token %}
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Descrição</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="descricao" name="descricao" value="">
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-search"></span> Consultar</button>
+            <a href="/local/create/" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Criar local</a>
+        </div>
+    </form>
+</div>
+
+<div class="panel panel-default space">
+    <div class="panel-heading">Locals</div>
+
+    <div class="panel-padding ">
+        <table class="display" id="grid">
+            <thead>
+                <tr>
+                    <th>
+                        Cidade
+                    </th>
+                    <th>
+                        Menu
+                    </th>
+                    <th>
+                        Nome
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% if list %}
+                  {% for result in list %}
+                      <tr>
+                            <td>
+                                 {{ result.city }}
+                            </td>
+                            <td>
+                                 {{ result.menu }}
+                            </td>
+                            <td>
+                                 {{ result.name }}
+                            </td>
+                            <td class="grid-option">
+                                <a href="/local/edit/{{ result.id }}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                            </td>
+                            <td class="grid-option">
+                                <a href="/local/delete/{{ result.id }}"  class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts_block %}
+    <script>
+        var oTable = $('#grid').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers",
+            "aoColumns": [null, null, null, { "bSortable": false }, { "bSortable": false }]
+        });
+
+    </script>
+{% endblock %}

@@ -1,7 +1,4 @@
-﻿loadMenu();
-
-function loadMenu()
-{
+﻿(function() {
     var url = window.location.pathname.toLowerCase();
 
     if (url.indexOf("user") != -1) {
@@ -23,4 +20,5 @@ function loadMenu()
                     $("#item4").addClass("active");
     
                 }
-}
+})();
+

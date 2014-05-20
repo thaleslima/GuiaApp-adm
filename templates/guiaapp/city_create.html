@@ -1,11 +1,11 @@
 {% extends "guiaapp/base.html" %}
 
-{% block title %} {{edit}} menu - {% endblock %}
+{% block title %} {{edit}} city - {% endblock %}
 
 {% block body_block %}
 <ol class="breadcrumb breadcrumb-border">
-    <li><a href="/menu">Menu</a></li>
-    <li class="active">{{edit}} menu</li>
+    <li><a href="/city">Menu</a></li>
+    <li class="active">{{edit}} city</li>
 </ol>
 
 <form action="" method="post">
@@ -30,18 +30,18 @@
 
 
             <div class="form-group">
-            	<label class="control-label col-md-2" for="active">Active</label>
+            	<label class="control-label col-md-2" for="active">UF *</label>
 
-                 <div class="col-md-10">
-                     {{ form.active }}
-                     {{ form.active.errors }}
+                 <div class="col-md-2">
+                     {{ form.uf }}
+                     {{ form.uf.errors }}
                 </div>
 
             </div>
         </div>
 
         <div class="panel-footer">
-             <a href="/menu" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+             <a href="/city" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
 
             <button type="submit" class="btn btn-success">
                 <span class="glyphicon glyphicon-ok"></span> Confirmar
