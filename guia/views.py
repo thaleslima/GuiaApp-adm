@@ -176,3 +176,4 @@ def get_locals(request):
     # return HttpResponse(retorno, content_type='application/json')
     data = {}
     data['something'] = 'useful'
+    return HttpResponse(json.dumps(data), content_type = "application/json")
