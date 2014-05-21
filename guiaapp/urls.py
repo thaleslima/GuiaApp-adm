@@ -30,4 +30,7 @@ urlpatterns = patterns('',
     (r'^local/edit/(?P<local_id>\w+)$', 'guia.views.local_create'),
     (r'^local/delete/(?P<local_id>\w+)$', 'guia.views.local_delete'),
     (r'^get_locals/$', 'guia.views.get_locals'),
+
+    (r'^login-user/(?P<login>\w+)/(?P<password>\w+)$', 'guia.views.login_user'),
+
 )

@@ -177,3 +177,15 @@ def get_locals(request):
     data = {}
     data['something'] = 'useful'
     return HttpResponse(json.dumps(data), content_type = "application/json")
+
+
+def login_user(request, login, password):
+	if request.method == 'GET':
+		data = {}
+		data['id'] = 1
+		data['nome'] = "Admin"
+		data['email'] = "admin@admin.com"
+		data['login'] = login
+		return HttpResponse(json.dumps(data), content_type = "application/json")
+
+	return Response(status="404")
