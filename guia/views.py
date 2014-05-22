@@ -181,11 +181,14 @@ def get_locals(request):
 
 def login_user(request, login, password):
 	if request.method == 'GET':
-		data = {}
-		data['id'] = 1
-		data['nome'] = "Admin"
-		data['email'] = "admin@admin.com"
-		data['login'] = login
-		return HttpResponse(json.dumps(data), content_type = "application/json")
+		if login == "admin" and password == "123":
+			data = {}
+			data['id'] = 1
+			data['name'] = "Admin"
+			data['email'] = "admin@admin.com"
+			data['login'] = login
+			return HttpResponse(json.dumps(data), content_type = "application/json")
 
-	return Response(status="404")
+	data = {}
+	data['cod-erro'] = "Usuario nao cadastrado."
+	return HttpResponse(json.dumps(data), content_type = "application/json; charset=utf-8")
