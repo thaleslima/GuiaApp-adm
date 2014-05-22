@@ -190,5 +190,7 @@ def login_user(request, login, password):
 			return HttpResponse(json.dumps(data), content_type = "application/json")
 
 	data = {}
-	data['cod-erro'] = "Usuario nao cadastrado."
+	
+	data['status'] = "Fail"
+	data['message'] = "Usuario nao cadastrado."
 	return HttpResponse(json.dumps(data), content_type = "application/json; charset=utf-8")
