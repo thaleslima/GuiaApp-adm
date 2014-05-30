@@ -33,4 +33,6 @@ urlpatterns = patterns('',
 
     (r'^login-user/(?P<login>\w+)/(?P<password>\w+)$', 'guia.views.login_user'),
 
+    (r'^get-product/$', 'guia.views.get_products'),
+
 )

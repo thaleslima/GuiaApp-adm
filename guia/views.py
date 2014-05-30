@@ -194,3 +194,132 @@ def login_user(request, login, password):
 	data['status'] = "Fail"
 	data['message'] = "Usuario nao cadastrado."
 	return HttpResponse(json.dumps(data), content_type = "application/json; charset=utf-8")
+
+def get_products(request):
+
+	categories = []
+
+	category = {}
+	category['id'] = 1
+	category['name'] = "Bebidas"
+
+	products = []
+	product = {}
+	product['id'] = 1
+	product['name'] = "Coca Cola lata"
+	product['price'] = 3.20
+	products.append(product)
+
+	product = {}
+	product['id'] = 2
+	product['name'] = "Fanta lata"
+	product['price'] = 1.30
+	products.append(product)
+
+	product = {}
+	product['id'] = 3
+	product['name'] = "Antarctica lata"
+	product['price'] = 4.20
+	products.append(product)
+
+	product = {}
+	product['id'] = 4
+	product['name'] = "Skol lata 300 ml"
+	product['price'] = 6.20
+	products.append(product)
+
+	product = {}
+	product['id'] = 5
+	product['name'] = "Skol garrafa 600 ml"
+	product['price'] = 8.20
+	products.append(product)
+
+	category['products'] = products
+	categories.append(category)
+
+
+
+	category = {}
+	category['id'] = 2
+	category['name'] = "Pratos"
+
+	products = []
+	product = {}
+	product['id'] = 6
+	product['name'] = "Maminha"
+	product['price'] = 9.90
+	products.append(product)
+
+	product = {}
+	product['id'] = 7
+	product['name'] = "Alcatra"
+	product['price'] = 5.10
+	products.append(product)
+
+	product = {}
+	product['id'] = 8
+	product['name'] = "Coxao"
+	product['price'] = 4.10
+	products.append(product)
+
+	product = {}
+	product['id'] = 9
+	product['name'] = "Bisteca Suina"
+	product['price'] = 9.10
+	products.append(product)
+
+	product = {}
+	product['id'] = 10
+	product['name'] = "File de frango"
+	product['price'] = 8.10
+	products.append(product)
+
+	category['products'] = products
+	categories.append(category)
+
+
+	category = {}
+	category['id'] = 3
+	category['name'] = "Pizzas"
+
+	products = []
+	product = {}
+	product['id'] = 11
+	product['name'] = "Muzzarela"
+	product['price'] = 1.20
+	products.append(product)
+
+	products = []
+	product = {}
+	product['id'] = 12
+	product['name'] = "Marquerita"
+	product['price'] = 1.50
+	products.append(product)
+
+	products = []
+	product = {}
+	product['id'] = 13
+	product['name'] = "Provolone"
+	product['price'] = 12.40
+	products.append(product)
+
+	products = []
+	product = {}
+	product['id'] = 13
+	product['name'] = "Lombinho"
+	product['price'] = 32.40
+	products.append(product)
+
+	products = []
+	product = {}
+	product['id'] = 13
+	product['name'] = "Portuguesa"
+	product['price'] = 13.40
+	products.append(product)
+	category['products'] = products
+	categories.append(category)
+	return HttpResponse(json.dumps(categories), content_type = "application/json; charset=utf-8")
+
+
+
+
