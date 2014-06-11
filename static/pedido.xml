@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pedido>
   <id>15</id>
-  <nomePedido>Pedido1<nomePedido/>
-  <itemPedido>
-    <id>15</id>
-    <valor>6</valor> 
-  </itemPedido>
-  <itemPedido>
-    <id>33</id> 
-    <valor>5</valor> 
-  </itemPedido>
-  <itemPedido>
-    <id>42</id> 
-    <valor>7</valor> 
-  </itemPedido>
+  <data>2014-01-01</data>
   
+  <cliente>
+    <id>1</id>
+    <nome>Nome do cliente</nome>
+    <datanascimento>1988-03-06</datanascimento>
+    <cpf>00000000000</cpf>
+  </cliente> 
 
+  <itens>
+      <produto>
+        <id>15</id>
+        <valor>6</valor> 
+        <quantidade>1</quantidade>
+      </produto>
+      <produto>
+        <id>33</id> 
+        <valor>5</valor>
+        <quantidade>1</quantidade> 
+      </produto>
+      <produto>
+        <id>42</id> 
+        <valor>7</valor> 
+        <quantidade>1</quantidade>
+      </produto>
+  </itens>
 </pedido>
