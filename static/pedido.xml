@@ -11,16 +11,23 @@
   </cliente> 
 
   <itens>
+      <idItem>1</idItem>
       <produto>
         <id>15</id>
         <valor>6</valor> 
         <quantidade>1</quantidade>
       </produto>
+  </itens>
+  <itens>
+      <idItem>2</idItem>
       <produto>
         <id>33</id> 
         <valor>5</valor>
         <quantidade>1</quantidade> 
       </produto>
+  </itens>
+  <itens>
+      <idItem>3</idItem>
       <produto>
         <id>42</id> 
         <valor>7</valor> 
