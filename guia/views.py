@@ -320,6 +320,22 @@ def get_products(request):
 	categories.append(category)
 	return HttpResponse(json.dumps(categories), content_type = "application/json; charset=utf-8")
 
+def get_commands(request):
+	commands = []
 
+
+	for x in range(1, 30):
+		command = {}
+		command['id'] = x
+		command['name'] = format(x, '02d')
+
+		command['status'] = 1
+
+		if x == 3 or x == 7 or x == 21 or x == 6:
+			command['status'] = 2
+
+		commands.append(command)
+
+	return HttpResponse(json.dumps(commands), content_type = "application/json; charset=utf-8")
 
 
